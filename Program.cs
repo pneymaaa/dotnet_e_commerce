@@ -1,9 +1,15 @@
 using dotnet_e_commerce.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
+IConfiguration configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(); //DbContext Configuration
+builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"))); //DbContext Configuration
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
