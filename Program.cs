@@ -1,6 +1,9 @@
+using dotnet_e_commerce.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(); //DbContext Configuration
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
