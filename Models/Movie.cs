@@ -11,7 +11,7 @@ namespace dotnet_e_commerce.Models
 
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public string? Price { get; set; }
+        public float? Price { get; set; }
 
         public string? ImageUrl { get; set; }
         public DateTime StartDate { get; set; }
