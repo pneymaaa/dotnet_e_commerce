@@ -24067,8 +24067,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/kamilakha/Projects/dotnet_e_commerce/dotnet_e_commerce/Views/Producers/index.cshtml",
-      "TargetPath": "Views\\Producers\\index.cshtml",
+      "FilePath": "/Users/kamilakha/Projects/dotnet_e_commerce/dotnet_e_commerce/Views/Producers/Index.cshtml",
+      "TargetPath": "Views\\Producers\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/kamilakha/Projects/dotnet_e_commerce/dotnet_e_commerce/Views/Cinemas/Index.cshtml",
+      "TargetPath": "Views\\Cinemas\\Index.cshtml",
       "FileKind": "mvc"
     }
   ]
