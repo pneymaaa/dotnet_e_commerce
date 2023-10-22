@@ -1,4 +1,5 @@
 using dotnet_e_commerce.Data;
+using dotnet_e_commerce.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -6,15 +7,15 @@ namespace dotnet_e_commerce.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IActorsServices _service;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsServices service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Actors.ToList();
+            var data = await _service.GetAll();
             return View(data);
         }
     }

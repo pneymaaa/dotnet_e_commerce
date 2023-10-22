@@ -1,4 +1,7 @@
 using dotnet_e_commerce.Data;
+using dotnet_e_commerce.Data.Services;
+using dotnet_e_commerce.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -11,6 +14,7 @@ IConfiguration configuration = new ConfigurationBuilder()
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"))); //DbContext Configuration
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IActorsServices, ActorsService>();
 
 var app = builder.Build();
 
