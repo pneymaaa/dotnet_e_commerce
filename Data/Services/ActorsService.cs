@@ -14,7 +14,8 @@ namespace dotnet_e_commerce.Data.Services
 
         public void Add(Actor actor)
         {
-            throw new NotImplementedException();
+            _context.Add(actor);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

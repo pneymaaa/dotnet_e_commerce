@@ -1,5 +1,6 @@
 using dotnet_e_commerce.Data;
 using dotnet_e_commerce.Data.Services;
+using dotnet_e_commerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -23,6 +24,17 @@ namespace dotnet_e_commerce.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
