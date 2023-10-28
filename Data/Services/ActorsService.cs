@@ -12,10 +12,10 @@ namespace dotnet_e_commerce.Data.Services
             _context = context;
         }
 
-        public void Add(Actor actor)
+        public async Task AddAsync(Actor actor)
         {
-            _context.Add(actor);
-            _context.SaveChanges();
+            await _context.AddAsync(actor);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -29,14 +29,17 @@ namespace dotnet_e_commerce.Data.Services
             return result;
         }
 
-        public Actor GetById(int id)
+        public async Task<Actor?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var results = await _context.Actors.Where(o=>o.Id == id).FirstOrDefaultAsync();
+            return results;
         }
 
-        public Actor Update(int id, Actor newActor)
+        public async Task<Actor> UpdateAsync(int id, Actor newActor)
         {
-            throw new NotImplementedException();
+            _context.Update(newActor);
+            await _context.SaveChangesAsync();
+            return newActor;
         }
     }
 }

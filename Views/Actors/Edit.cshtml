@@ -1,0 +1,51 @@
+@model Actor
+@{
+    ViewData["Title"] = "Edit the actor";
+}
+
+<div class="row-text">
+    <div class="col-md-8 offset-2">
+        <p><h1>Edit the Actor</h1></p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+                <div class="form-group text-center">
+                    <img id="ImageUrlPreview">
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label"></label>
+                    <input asp-for="ImageUrl" class="form-control">
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control">
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bio" class="control-label"></label>
+                    <input asp-for="Bio" class="form-control">
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-outline-success" value="Edit">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Show All</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function() {
+            $("#ImageUrlPreview").prop("src", $("#ImageUrl").val());
+        });
+
+        $("#ImageUrl").on("change", function() {
+            $("#ImageUrlPreview").prop("src", $(this).val());
+        });
+    </script>
+}

@@ -1,7 +1,5 @@
 using dotnet_e_commerce.Data;
 using dotnet_e_commerce.Data.Services;
-using dotnet_e_commerce.Models;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 

@@ -27,13 +27,40 @@ namespace dotnet_e_commerce.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Actor actor)
+        public async Task<IActionResult> Create(Actor actor)
         {
             if (!ModelState.IsValid)
             {
                 return View(actor);
             }
-            _service.Add(actor);
+            await _service.AddAsync(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Actors/Details/{id}
+        public async Task<IActionResult> Details(int id)
+        {
+            var actor = await _service.GetByIdAsync(id);
+            if(actor == null) return View("Empty");
+            return View(actor);           
+        }
+
+        //Get: Actors/Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actor = await _service.GetByIdAsync(id);
+            if (actor == null) return View("Empty");
+            return View(actor);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ImageUrl,Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            await _service.UpdateAsync(id, actor);
             return RedirectToAction(nameof(Index));
         }
     }
